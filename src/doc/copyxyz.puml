@@ -1,0 +1,14 @@
+@startuml
+package "dev.kevinyohe.garden2023" {
+  class "Garden2023Application" as dev.kevinyohe.garden2023.Garden2023Application {
+    + {static}void main(String[])
+  }
+  package "controller" {
+    class "ThingController" as dev.kevinyohe.garden2023.controller.ThingController {
+      +String getThing()
+      +String postThing(String)
+      +String deleteThing()
+    }
+  }
+}
+@enduml

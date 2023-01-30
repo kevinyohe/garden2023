@@ -1,0 +1,65 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'org.springframework.boot' version '3.0.2'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id "io.gitlab.plunts.plantuml" version "2.0.2"
+    id "com.cosminpolifronie.gradle.plantuml" version "1.6.0"
+}
+
+group = 'dev.kevinyohe'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// https://github.com/cosminpolifronie/gradle-plantuml-plugin
+plantUml {
+    classDiagrams {
+        diagram {
+            name "Visualise Package"
+            include packages().withName("dev.kevinyohe")
+            writeTo file('src/doc/xyz.puml')
+        }
+        render input: 'src/doc/test123.puml', output: '/src/doc/some.svg', format: 'svg', withMetadata: false
+        //render input: 'src/doc/*.puml', output: '/src/doc', format: 'svg', withMetadata: false
+    }
+
+
+}
+
+// https://gitlab.com/Plunts/plantuml-gradle-plugin
+classDiagrams {
+    diagram {
+        name "Visualise Package"
+        include packages().withName("dev.kevinyohe")
+        writeTo file('src/doc/xyz.puml')
+    }
+}
+
+test {
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+}
