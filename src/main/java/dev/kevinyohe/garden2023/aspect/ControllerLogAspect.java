@@ -3,6 +3,7 @@ package dev.kevinyohe.garden2023.aspect;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +17,7 @@ public class ControllerLogAspect {
 
     }
 
-    @Around("controllerPointcut()")
+    @Before("controllerPointcut()")
     public void logIt() {
         log.info("Controller was ran!");
     }
