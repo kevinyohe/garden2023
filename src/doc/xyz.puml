@@ -11,12 +11,22 @@ package "dev.kevinyohe.garden2023" {
   }
   package "controller" {
     class "HintController" as dev.kevinyohe.garden2023.controller.HintController {
-      +String getHint()
+      +Hint getHint()
+      +Hint getHint2()
+      +String getInfo()
     }
     class "ThingController" as dev.kevinyohe.garden2023.controller.ThingController {
       +String getThing()
       +String postThing(String)
       +String deleteThing()
+    }
+  }
+  package "model" {
+    class "Hint" as dev.kevinyohe.garden2023.model.Hint {
+      +String hintText
+      __
+      +String getHintText()
+      +void setHintText(String)
     }
   }
 }
