@@ -51,7 +51,7 @@ classDiagrams {
     diagram {
         name "Visualise Package"
         include packages().withName("dev.kevinyohe")
-        writeTo file('src/doc/xyz.puml')
+        writeTo file("src/doc/xyz-${version}.puml")
     }
 }
 
