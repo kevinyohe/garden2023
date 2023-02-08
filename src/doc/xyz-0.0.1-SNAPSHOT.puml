@@ -1,0 +1,33 @@
+@startuml
+package "dev.kevinyohe.garden2023" {
+  class "Garden2023Application" as dev.kevinyohe.garden2023.Garden2023Application {
+    + {static}void main(String[])
+  }
+  package "aspect" {
+    class "ControllerLogAspect" as dev.kevinyohe.garden2023.aspect.ControllerLogAspect {
+      +void controllerPointcut()
+      +void logIt()
+    }
+  }
+  package "controller" {
+    class "HintController" as dev.kevinyohe.garden2023.controller.HintController {
+      +Hint getHint()
+      +Hint getHint2()
+      +String getInfo()
+    }
+    class "ThingController" as dev.kevinyohe.garden2023.controller.ThingController {
+      +String getThing()
+      +String postThing(String)
+      +String deleteThing()
+    }
+  }
+  package "model" {
+    class "Hint" as dev.kevinyohe.garden2023.model.Hint {
+      +String hintText
+      __
+      +String getHintText()
+      +void setHintText(String)
+    }
+  }
+}
+@enduml

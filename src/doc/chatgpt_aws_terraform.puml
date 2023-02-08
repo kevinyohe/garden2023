@@ -1,0 +1,16 @@
+@startuml
+title Terraform Configuring AWS Servers
+
+package "Terraform" {
+  [Terraform CLI] --> [Terraform Configuration Files]
+  [Terraform Configuration Files] --> [Terraform State Files]
+}
+
+package "AWS" {
+  [AWS API] <-- [Terraform CLI]
+  [AWS Infrastructure] <-- [AWS API]
+}
+
+[Terraform CLI] --> [AWS API] : Apply Configuration
+
+@enduml

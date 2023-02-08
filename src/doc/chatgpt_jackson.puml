@@ -1,0 +1,9 @@
+@startuml
+title Jackson Serialization and Deserialization
+
+package "Jackson Library" {
+  [Java Object] --> [JSON String] : Serialization
+  [JSON String] --> [Java Object] : Deserialization
+}
+
+@enduml
