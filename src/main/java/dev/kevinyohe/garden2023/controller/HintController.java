@@ -35,7 +35,8 @@ public class HintController {
     @GetMapping("/api/info")
     public String getInfo() {
         // return configuration info
-
+        // sleep for 3 secs
+        
         return "injectedProperty = " + injectedProperty;
     }
 }

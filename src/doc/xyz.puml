@@ -10,6 +10,9 @@ package "dev.kevinyohe.garden2023" {
     }
   }
   package "controller" {
+    class "AccountCreateController" as dev.kevinyohe.garden2023.controller.AccountCreateController {
+      +ResponseEntity<Void> createAccount()
+    }
     class "HintController" as dev.kevinyohe.garden2023.controller.HintController {
       +Hint getHint()
       +Hint getHint2()
